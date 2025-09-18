@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fitness WebApp</title>
+  <!-- ОТНОСИТЕЛЬНЫЙ путь к CSS (имя файла style.css в той же папке) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Добро пожаловать в Fitness WebApp</h1>
+    <p>Пример простого веб-интерфейса для интеграции с Telegram WebApp.</p>
+  </header>
+
+  <main>
+    <label for="workout">Название тренировки</label>
+    <input id="workout" type="text" placeholder="Например: Ноги — приседания" />
+
+    <div class="controls">
+      <button id="sendBtn">Отправить в бот</button>
+      <button id="closeBtn">Закрыть WebApp</button>
+    </div>
+
+    <div id="info" role="status" aria-live="polite"></div>
+  </main>
+
+  <!-- ОТНОСИТЕЛЬНЫЙ путь к JS (имя файла script.js в той же папке) -->
+  <script src="script.js"></script>
+</body>
+</html>
