@@ -1,17 +1,15 @@
-/* Общие стили */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #fff;
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Шапка */
 .app-header {
   width: 100%;
-  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364); /* футуристичный градиент */
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
   color: white;
   display: flex;
   justify-content: center;
@@ -36,7 +34,6 @@ body {
   cursor: pointer;
 }
 
-/* Меню */
 .side-menu {
   position: fixed;
   top: 0;
@@ -48,6 +45,10 @@ body {
   transition: 0.3s;
   padding-top: 60px;
   z-index: 1000;
+}
+
+.side-menu.active {
+  right: 0;
 }
 
 .side-menu ul {
@@ -65,57 +66,61 @@ body {
   color: white;
 }
 
-.side-menu.active {
-  right: 0;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 22px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-/* Основное содержимое */
 .app-content {
   margin-top: 20px;
   text-align: center;
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
 }
 
-.logo-placeholder {
-  margin: 20px 0;
-  padding: 40px;
-  border: 2px dashed #ccc;
+.back-btn {
+  display: block;
+  margin: 10px auto 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background: #3498db;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.exercise {
+  border: 1px solid #ccc;
   border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  text-align: left;
 }
 
-/* Плиточные кнопки */
-.grid-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 20px;
+.exercise input, .exercise textarea {
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.tile-btn {
-  padding: 20px;
+.add-btn, .save-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
   background: linear-gradient(to bottom, #3498db, #2980b9);
   border: none;
   border-radius: 12px;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
   cursor: pointer;
   transition: 0.2s;
 }
 
-.tile-btn:active {
+.add-btn:active, .save-btn:active {
   transform: translateY(2px);
 }

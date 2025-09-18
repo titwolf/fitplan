@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Создать тренировку</title>
+  <link rel="stylesheet" href="create.css">
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="app-header">
+    <h1 class="logo">FitPlan</h1>
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+  </header>
+
+  <!-- Меню -->
+  <nav class="side-menu" id="sideMenu">
+    <button class="close-btn" onclick="closeMenu()">✖</button>
+    <ul>
+      <li><a href="#">Мои тренировки</a></li>
+      <li><a href="#">Статистика</a></li>
+      <li><a href="#">Настройки</a></li>
+    </ul>
+  </nav>
+
+  <!-- Основное содержимое -->
+  <main class="app-content">
+    <button class="back-btn" onclick="goBack()">← Вернуться назад</button>
+
+    <h2>Создать тренировку</h2>
+
+    <div id="exercises-container"></div>
+
+    <button class="add-btn" onclick="addExercise()">+ Добавить упражнение</button>
+    <button class="save-btn" onclick="saveWorkout()">💾 Сохранить</button>
+  </main>
+
+  <script src="Create.js"></script>
+</body>
+</html>
