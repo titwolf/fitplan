@@ -1,0 +1,298 @@
+/* createTrain.css — исправленная версия */
+
+/* ========== БЕЗОПАСНЫЕ НАСТРОЙКИ ========== */
+:root {
+  --bg: #f4f6f9;
+  --panel: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  --accent: #2c5364;
+  --muted: #7f8c8d;
+  --card-bg: #ffffff;
+  --text: #222;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text);
+  overflow-x: hidden; /* важно: прячет часть бокового меню и убирает полосы */
+}
+
+/* ========== ШАПКА (логотип по центру, кнопка меню справа) ========== */
+.app-header {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center; /* логотип по центру */
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--panel);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.22);
+}
+
+.logo {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* кнопка меню расположена абсолютно — справа по центру по вертикали */
+.menu-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+/* ========== БОКОВОЕ МЕНЮ ========== */
+/* меню изначально за правой границей, плавно выезжает */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -260px; /* спрятано за правой границей */
+  width: 260px;
+  height: 100vh;
+  background: var(--accent);
+  color: #fff;
+  padding: 20px 14px;
+  transition: right 0.28s cubic-bezier(.2,.9,.3,1);
+  z-index: 1100;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.35);
+}
+.side-menu.active { right: 0; }
+
+.side-menu .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.side-menu ul { list-style: none; padding: 0; margin: 0; }
+.side-menu li { margin: 12px 0; }
+.side-menu a { color: white; text-decoration: none; font-weight: 600; }
+
+/* ========== САМ КОНТЕНТ (центруем и ограничиваем ширину) ========== */
+.app-content {
+  width: 100%;
+  max-width: 520px;         /* ограничение ширины */
+  margin: 18px auto;        /* центр по горизонтали, небольшой отступ сверху */
+  padding: 0 14px;          /* внутренние отступы для узких экранов */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* кнопка назад */
+.back-btn {
+  display: inline-block;
+  margin: 6px 0 14px;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid rgba(44,83,100,0.12);
+  color: var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* заголовки */
+h2 { margin: 6px 0 6px; font-size: 20px; }
+.subtitle { margin: 0 0 14px; color: #556; font-size: 14px; }
+
+/* ========== КНОПКИ "ДОБАВИТЬ" И "СОХРАНИТЬ" ========== */
+.add-btn, .save-btn {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--panel);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(12,20,30,0.18);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .12s;
+}
+.add-btn:hover, .save-btn:hover { transform: translateY(-3px); }
+
+/* ========== ЗАГОЛОВОК СПИСКА (по умолчанию скрывается JS) ========== */
+#list-title { margin-top: 10px; color: var(--accent); font-weight:700; }
+
+/* ========== ФОРМА ДОБАВЛЕНИЯ ========== */
+.exercise-form {
+  width: 100%;
+  border-radius: 12px;
+  background: var(--card-bg);
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 20px rgba(8,12,20,0.06);
+  text-align: left;
+  animation: fadeInSlide .36s ease forwards;
+  overflow: hidden;
+}
+
+/* при скрытии формы применяется класс .removing (JS) */
+.exercise-form.removing { animation: fadeOutSlide .34s ease forwards; }
+
+/* подписи и поля */
+.exercise-form label {
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  color:#333;
+  margin: 8px 0 6px;
+}
+.exercise-form input,
+.exercise-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d0d6db;
+  background: #fff;
+  font-size:14px;
+  color: #222;
+  resize: none;
+  outline: none;
+}
+
+/* кнопки в форме — одинаковой высоты и внешнего вида */
+.exercise-form .form-actions {
+  display:flex;
+  gap:10px;
+  margin-top:8px;
+}
+.exercise-form .form-actions .form-btn {
+  flex:1;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 14px rgba(8,12,20,0.08);
+}
+.form-btn.save {
+  background: var(--panel);
+  color: #fff;
+}
+.form-btn.cancel {
+  background: linear-gradient(180deg, #9aa6ab, #7f8c8d);
+  color: #fff;
+}
+
+/* ========== СЕТКА КАРТОЧЕК УПРАЖНЕНИЙ ========== */
+#exercises-list.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 колонки по умолчанию */
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* мобильная адаптация: 2 колонки при узком экране */
+@media (max-width: 520px) {
+  #exercises-list.grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 360px) {
+  #exercises-list.grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* карточка-«квадрат» — используем aspect-ratio для аккуратного квадрата */
+.exercise-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 6px 18px rgba(8,12,20,0.08);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  aspect-ratio: 1 / 1;         /* обеспечивает квадратную форму */
+  overflow: hidden;
+  animation: cardAppear .36s cubic-bezier(.2,.9,.3,1);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.exercise-card h4 { margin: 0 0 6px; font-size: 15px; }
+.exercise-card p { margin: 4px 0; font-size: 13px; color: #4b5560; line-height:1.15; }
+
+/* удаление — плавно смещаем/прячем */
+.exercise-card.removing {
+  opacity: 0;
+  transform: translateY(18px) scale(.98);
+}
+
+/* кнопка удалить — под ширину карточки, аккуратная */
+.delete-btn {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #e74c3c;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(231,76,60,0.12);
+  transition: transform .14s ease, opacity .12s;
+}
+.delete-btn:active { transform: translateY(2px); }
+
+/* ========== АНИМАЦИИ ========== */
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOutSlide {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); height:0; padding:0; margin:0; }
+}
+@keyframes cardAppear {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* плавное появление для #list-title и кнопки сохранения — применяем класс .fade-slide */
+.fade-slide {
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: fadeInSlide .36s ease forwards;
+}
+
+/* ========== НЕКОТОРЫЕ МЕЛКИЕ УЛУЧШЕНИЯ ========== */
+h2, .subtitle, #list-title { margin-left: 4px; margin-right: 4px; }
+
+
+.fade-slide {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.removing {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}

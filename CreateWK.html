@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Создать тренировку</title>
+  <link rel="stylesheet" href="create.css">
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="app-header">
+    <h1 class="logo">FitPlan</h1>
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+  </header>
+
+  <!-- Меню -->
+  <nav class="side-menu" id="sideMenu">
+    <button class="close-btn" onclick="closeMenu()">✖</button>
+    <ul>
+      <li><a href="#">Мои тренировки</a></li>
+      <li><a href="#">Статистика</a></li>
+      <li><a href="#">Настройки</a></li>
+    </ul>
+  </nav>
+
+  <!-- Основное содержимое -->
+  <main class="app-content">
+    <button class="back-btn" onclick="goBack()">← Вернуться назад</button>
+
+    <h2>Создание новой тренировки</h2>
+    <p class="subtitle">Добавляйте упражнения и формируйте свой план</p>
+
+    <div id="exercise-form"></div>
+
+    <button id="add-btn" class="add-btn" onclick="showExerciseForm()">Добавить упражнение</button>
+
+    <h3 id="list-title" class="fade-slide" style="display:none;">Список упражнений</h3>
+    <div id="exercises-list" class="grid"></div>
+
+    <button id="save-btn" class="save-btn fade-slide" style="display:none;" onclick="saveWorkout()">Сохранить тренировку</button>
+  </main>
+
+  <script src="Create.js"></script>
+</body>
+</html>
